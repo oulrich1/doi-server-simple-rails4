@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  url: MyString
+  datetime_added: 2013-10-29 20:26:18
+  doi_id: 1
+
+two:
+  url: MyString
+  datetime_added: 2013-10-29 20:26:18
+  doi_id: 1

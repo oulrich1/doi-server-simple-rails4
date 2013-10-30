@@ -1,0 +1,33 @@
+<%= form_for(@doi) do |f| %>
+  <% if @doi.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@doi.errors.count, "error") %> prohibited this doi from being saved:</h2>
+
+      <ul>
+      <% @doi.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% f.hidden_field :user_id %> <!--label  number_field devise sets this from the login.. -->
+
+  <div class="field">
+    <%= f.label :label %><br>
+    <%= f.text_field :label %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= "Url" %><br>
+    <%= f.text_field :url_text %>
+    <!-- <input type="text" name="url[url_text]"></input> -->
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Label:</strong>
+  <%= @doi.label %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @doi.description %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @doi.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_doi_path(@doi) %> |
+<%= link_to 'Back', dois_path %>

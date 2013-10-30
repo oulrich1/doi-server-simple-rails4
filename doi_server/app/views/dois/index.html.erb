@@ -1,0 +1,50 @@
+<h1>DOI Server</h1>
+<h3>Resolve DOI to a resource</h3>
+
+
+<div class="field">
+  <input type="text" name="search" value=""></input>
+  <button>Search</button>
+</div>
+  <br>
+
+<h3>DOI List:</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Doi Label</th>
+      <th>Description</th>
+      <th>User</th>
+      <th>Url</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dois.each do |doi| %>
+      <tr>
+        <td><%= doi.label %></td>
+        <td><%= doi.description %></td>
+        <td><%= doi.user_id %></td>
+        <td><%= doi.urls.last.url_text %></td>
+
+<% if user_signed_in? %>  
+        <td><%= link_to 'Show', doi %></td>
+        <td><%= link_to 'Edit', edit_doi_path(doi) %></td>
+        <td><%= link_to 'Destroy', doi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% end %>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if user_signed_in? %>
+<%= link_to 'New Doi', new_doi_path %>
+<% end %>
+<br>
+<br>
