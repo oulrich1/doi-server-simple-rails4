@@ -11,18 +11,14 @@
     </div>
   <% end %>
 
+  <%= f.hidden_field :doi_id %>
+  <%= f.hidden_field :user_id %>
+
   <div class="field">
     <%= f.label :comment %><br>
     <%= f.text_area :comment %>
   </div>
-  <div class="field">
-    <%= f.label :doi_id %><br>
-    <%= f.number_field :doi_id %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

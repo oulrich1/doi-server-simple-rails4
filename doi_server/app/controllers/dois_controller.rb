@@ -79,6 +79,15 @@ class DoisController < ApplicationController
     end
   end
 
+  def query
+      doi = Doi.first(:conditions => {:id => params[:query]})
+      if doi
+        redirect_to doi
+      else
+        redirect_to root_url, notice: "No match for query <#{params[:query]}> found. The DOI does not exist."
+      end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_doi

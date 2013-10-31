@@ -4,8 +4,8 @@
   <thead>
     <tr>
       <th>Url Text</th>
-      <th>Datetime added</th>
-      <th>Doi</th>
+      <th>Datetime-added</th>
+      <th>DOI ID</th>
       <th></th>
       <th></th>
       <th></th>
@@ -16,7 +16,7 @@
     <% @urls.each do |url| %>
       <tr>
         <td><%= url.url_text %></td>
-        <td><%= url.datetime_added %></td>
+        <td><%= url.datetime_added.to_s.slice(0..15) %></td>
         <td><%= url.doi_id %></td>
         <td><%= link_to 'Show', url %></td>
         <td><%= link_to 'Edit', edit_url_path(url) %></td>
@@ -28,4 +28,5 @@
 
 <br>
 
-<%= link_to 'New Url', new_url_path %>
+<%= link_to 'New Url', new_url_path %> |
+<%= link_to 'Back', dois_path %>

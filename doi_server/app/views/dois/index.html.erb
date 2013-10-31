@@ -1,12 +1,25 @@
-<h1>DOI Server</h1>
-<h3>Resolve DOI to a resource</h3>
+<div class="page-header-container">
+  <div class="page-header">DOI Server: </div>
+  <div class="page-sub-header">Resolve DOI to a resource</div>
+</div> 
 
 
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<%= form_tag("/query", method: "get") do %>
+  <%= label_tag(:query, "Search for a DOI: ") %>
+  <%= text_field_tag(:query) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<!-- 
 <div class="field">
-  <input type="text" name="search" value=""></input>
+  <input type="text" name="query" id="query" value=""></input>
   <button>Search</button>
 </div>
-  <br>
+  <br> -->
 
 <h3>DOI List:</h3>
 <table>
@@ -32,7 +45,11 @@
 
 <% if user_signed_in? %>  
         <td><%= link_to 'Show', doi %></td>
-        <td><%= link_to 'Edit', edit_doi_path(doi) %></td>
+        <td>
+<% if current_user.id == doi.user_id %>  
+        <%= link_to 'Edit', edit_doi_path(doi) %>
+<% end %>
+        </td>
         <td><%= link_to 'Destroy', doi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 <% end %>
 
