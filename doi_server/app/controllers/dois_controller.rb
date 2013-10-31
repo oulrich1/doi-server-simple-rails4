@@ -1,5 +1,5 @@
 class DoisController < ApplicationController
-  before_action :set_doi, only: [:show, :edit, :update, :destroy]
+  before_action :set_doi, only: [:show, :serve, :edit, :update, :destroy]
   # before_filter :authenticate_user!
   
   # GET /dois
@@ -16,6 +16,10 @@ class DoisController < ApplicationController
   # GET /dois/new
   def new
     @doi = Doi.new
+  end
+
+  def serve
+    redirect_to @doi. 
   end
 
   # GET /dois/1/edit
@@ -78,6 +82,8 @@ class DoisController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 
   def query
       doi = Doi.first(:conditions => {:id => params[:query]})
