@@ -5,6 +5,7 @@ class UrlsController < ApplicationController
   # GET /urls.json
   def index
     @urls = Url.all
+    
   end
 
   # GET /urls/1

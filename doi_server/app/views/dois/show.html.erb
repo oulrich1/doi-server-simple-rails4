@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>DOI ID:</strong>
+  <%= @doi.id %>
+</p>
+
+<p>
   <strong>Label:</strong>
   <%= @doi.label %>
 </p>
@@ -20,7 +25,7 @@
   <%= @doi.urls.last.url_text %>
 </p>
 
-<%= link_to 'View URL History', urls_path %> |
+<%= link_to 'View URL History', urls_path(@doi) %> |
 <%= link_to 'View Comments', comments_path %> |
 <%= link_to 'Edit', edit_doi_path(@doi) %> |
 <%= link_to 'Back', dois_path %>

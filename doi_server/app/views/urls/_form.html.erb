@@ -12,17 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :url %><br>
-    <%= f.text_field :url %>
+    <%= "URL" %><br>
+    <%= f.text_field :url_text %>
   </div>
   <div class="field">
     <%= f.label :datetime_added %><br>
     <%= f.datetime_select :datetime_added %>
   </div>
-  <div class="field">
-    <%= f.label :doi_id %><br>
-    <%= f.number_field :doi_id %>
-  </div>
+  <%= f.hidden_field :doi_id %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
