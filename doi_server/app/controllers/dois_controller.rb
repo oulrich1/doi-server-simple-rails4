@@ -35,23 +35,23 @@ class DoisController < ApplicationController
   # POST /dois
   # POST /dois.json
   def create
+    @doi = Doi.new(doi_params)
     @doi = current_user.dois.create(doi_params)
-    # @url = @doi.urls.build
-    # @url.url_text = params[:doi][:url_text]
+    #@url = @doi.urls.build(url_params)
 
-    # if @doi.save
-    #   @url = Url.new
-    #   @url.doi_id = @doi.id
-    #   @url.url_text = params[:doi][:url_text]
-    #   @url.datetime_added = Time.now
-    #   @url.save
-    #    #time is automatically set somewhere in rails
-    # end
+    if @doi.save
+      @url = Url.new
+      @url.doi_id = @doi.id
+      @url.url_text = params[:doi][:url_text]
+      @url.datetime_added = Time.now
+      @url.save
+       #time is automatically set somewhere in rails
+    end
 
     # save the paremeters and 
     # => commit to database
     respond_to do |format|
-      if @doi.save && @url.save
+      if @doi.save
         format.html { redirect_to @doi, notice: 'Doi was successfully created.' }
         format.json { render action: 'show', status: :created, location: @doi }
       else
@@ -121,4 +121,9 @@ class DoisController < ApplicationController
     def doi_params
       params.require(:doi).permit(:label, :description, :user_id)
     end
+
+    # def url_params
+    #   params.require(:doi).permit(:url_text, :doi_id);
+    # end
+
 end
