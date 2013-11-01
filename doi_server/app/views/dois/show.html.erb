@@ -23,6 +23,7 @@
 <p>
   <strong>URL:</strong>
   <%= @doi.urls.last.url_text %>
+  <%= link_to 'Go To Resource', @doi.urls.last.url_text, class: "btn btn-success" %>
 </p>
 
 <%= link_to 'View URL History', urls_path(@doi) %> |

@@ -13,6 +13,6 @@ class Doi < ActiveRecord::Base
 	# so that we can access the url from the 
 	# doi view..
 	attr_accessor :url_text
-	
+
 
 end

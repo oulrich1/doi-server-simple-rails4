@@ -18,8 +18,14 @@ class DoisController < ApplicationController
     @doi = Doi.new
   end
 
+  
+  # GET /dois/:id/serve
   def serve
-    redirect_to @doi. 
+    # when this action recieves a request..
+    # grab the parameter params[:id] or 
+    # Then redirect the user to the url that 
+    # matches that doi
+    # redirect_to @doi.urls.last.url_text
   end
 
   # GET /dois/1/edit
@@ -87,8 +93,8 @@ class DoisController < ApplicationController
 
   def query
       doi = Doi.first(:conditions => {:id => params[:query]})
-      if doi
-        redirect_to doi
+      if doi or dois
+          redirect_to doi
       else
         redirect_to root_url, notice: "No match for query <#{params[:query]}> found. The DOI does not exist."
       end
