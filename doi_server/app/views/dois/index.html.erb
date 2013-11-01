@@ -7,12 +7,17 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
-<%= form_tag("/query", {method: "get"}) do %>
-  <%= label_tag(:query, "Search for a DOI: ") %>
-  <%= text_field_tag(:query) %>
+<%= form_tag("/query_id", {method: "get"}) do %>
+  <%= label_tag(:query_id, "Search for a DOI by ID: ") %>
+  <%= text_field_tag(:query_id) %>
   <%= submit_tag("Search") %>
 <% end %>
 
+<%= form_tag("/query_label", {method: "get"}) do %>
+  <%= label_tag(:query_label, "Search for a DOI by Label: ") %>
+  <%= text_field_tag(:query_label) %>
+  <%= submit_tag("Search") %>
+<% end %>
 <!-- 
 <div class="field">
   <input type="text" name="query" id="query" value=""></input>

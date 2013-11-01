@@ -10,7 +10,8 @@ DoiServer::Application.routes.draw do
 
   resources :dois
 
-  get 'query', to: 'dois#query'
+  get 'query_id', to: 'dois#query_id'
+  get 'query_label', to: 'dois#query_label'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

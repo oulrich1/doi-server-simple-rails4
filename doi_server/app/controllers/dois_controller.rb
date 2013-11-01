@@ -39,14 +39,14 @@ class DoisController < ApplicationController
     # @url = @doi.urls.build
     # @url.url_text = params[:doi][:url_text]
 
-    if @doi.save
-      @url = Url.new
-      @url.doi_id = @doi.id
-      @url.url_text = params[:doi][:url_text]
-      @url.datetime_added = Time.now
-      @url.save
-       #time is automatically set somewhere in rails
-    end
+    # if @doi.save
+    #   @url = Url.new
+    #   @url.doi_id = @doi.id
+    #   @url.url_text = params[:doi][:url_text]
+    #   @url.datetime_added = Time.now
+    #   @url.save
+    #    #time is automatically set somewhere in rails
+    # end
 
     # save the paremeters and 
     # => commit to database
@@ -91,10 +91,21 @@ class DoisController < ApplicationController
 
 
 
-  def query
-      doi = Doi.first(:conditions => {:id => params[:query]})
-      if doi or dois
+  def query_id
+      doi = Doi.first(:conditions => {:id => params[:query_id]})
+      if doi 
           redirect_to doi
+      else
+        redirect_to root_url, notice: "No match for query <#{params[:query]}> found. The DOI does not exist."
+      end
+  end
+
+  def query_label
+      # doi = Doi.first(:conditions => {:label => params[:query_label]})
+      first_doi = Doi.all.map {|doi| doi if Regexp.new(params[:query_label]).match(doi.label) }.compact.first
+        
+      if first_doi 
+          redirect_to first_doi
       else
         redirect_to root_url, notice: "No match for query <#{params[:query]}> found. The DOI does not exist."
       end
