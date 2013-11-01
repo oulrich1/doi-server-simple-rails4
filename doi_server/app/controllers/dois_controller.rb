@@ -102,7 +102,7 @@ class DoisController < ApplicationController
 
   def query_label
       # doi = Doi.first(:conditions => {:label => params[:query_label]})
-      first_doi = Doi.all.map {|doi| doi if Regexp.new(params[:query_label]).match(doi.label) }.compact.first
+      first_doi = Doi.all.map {|doi| doi if Regexp.new(params[:query_label],  Regexp::IGNORECASE).match(doi.label) }.compact.first
         
       if first_doi 
           redirect_to first_doi
